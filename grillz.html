@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <title>MORSO — grillz</title>
+  <meta name="description" content="Grillz cast from your own bite: open faces, full sets, fang caps, script, black rhodium and spikes. Silver, made to order in Milano." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- concept, design & code by ghostly.grl ♥ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="preload" href="img/HOME/jaw-top.webp" as="image" />
+  <link rel="preload" href="img/HOME/jaw-bottom.webp" as="image" />
+  <link rel="stylesheet" href="css/style.css?v=20261022-8" />
+  <link rel="stylesheet" href="css/grillz.css?v=20261022-8" />
+</head>
+<body class="is-loading" data-page="grillz">
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="liquid" x="-10%" y="-20%" width="120%" height="140%">
+        <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="4" result="n" />
+        <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ================= LOADER ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <p class="ld-num" id="ldNum">00</p>
+    <p class="ld-bot mono"><span id="ldMsg">warming the silver</span><span>milano — <b data-clock>00:00</b></span></p>
+  </div>
+
+  <!-- global fx -->
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hdr" id="hdr">
+    <nav class="nav" aria-label="Main">
+      <a href="objects.html" data-hover-scr>objects</a>
+      <a href="grillz.html" aria-current="page" data-hover-scr>grillz</a>
+      <a href="lookbook.html" data-hover-scr>lookbook</a>
+      <a href="custom.html" data-hover-scr>custom</a>
+      <a href="atelier.html" data-hover-scr>atelier</a>
+    </nav>
+    <a href="index.html" class="logo" aria-label="MORSO home">MORSO</a>
+    <a href="#prices" class="hdr__cta" data-jump data-hover-scr>prices</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== 1 · THE MOUTH OPENS ON THE GRILL ========== -->
+    <section class="gh" id="gh">
+      <div class="gh__pin" id="ghPin" data-cursor="scroll = say ahh">
+        <img class="blob" data-blob="7" data-at="6% 20%" data-w="9vw" data-depth="1.4" alt="" />
+        <img class="blob" data-blob="1" data-at="86% 66%" data-w="10vw" data-depth="-1.2" alt="" />
+        <p class="gh__meta mono"><span data-scr>N°02 — grillz</span><span data-scr>cast from your bite · 925 silver</span></p>
+        <div class="gh__inside" id="ghInside" aria-hidden="true"></div>
+        <p class="gh__say heavy" id="ghSay">say ahh.</p>
+        <div class="gh__jaw gh__jaw--top" id="ghTop"><img src="img/HOME/jaw-top.webp" alt="" draggable="false" /></div>
+        <div class="gh__jaw gh__jaw--bottom" id="ghBot"><img src="img/HOME/jaw-bottom.webp" alt="" draggable="false" /></div>
+        <h1 class="chrome chrome--liquid gh__t" id="ghT" data-word="GRILLZ" aria-label="grillz"></h1>
+        <p class="gh__sub heavy" id="ghSub">made from<br /><span class="out">your bite.</span></p>
+        <p class="gh__hint mono"><span data-scr>scroll — say ahh</span> <span class="red blink">●</span></p>
+      </div>
+    </section>
+
+    <!-- ========== 2 · STYLES: sideways ========== -->
+    <section class="styles" id="styles">
+      <div class="styles__pin">
+        <header class="styles__head">
+          <p class="mono" data-scr>01 — the styles</p>
+          <p class="mono styles__count"><b id="styleNow">01</b> / <span id="styleTot">06</span></p>
+        </header>
+        <div class="styles__track" id="stylesTrack"><!-- built from js/grillz.js --></div>
+        <div class="styles__bar"><i id="stylesBar"></i></div>
+      </div>
+    </section>
+
+    <!-- ========== 3 · THE PROCESS ========== -->
+    <section class="proc" id="process">
+      <div class="proc__pin">
+        <div class="proc__num heavy" aria-hidden="true"><span id="procNum">01</span></div>
+        <div class="proc__media" id="procMedia">
+          <div class="slot slot--cover" data-img="img/HOME/step-1.webp" data-alt="a black grill on a white dental cast"></div>
+          <div class="slot slot--cover" data-img="img/HOME/step-2.webp" data-alt="liquid chrome"></div>
+          <div class="slot slot--cover slot--cut proc__cut" data-img="img/HOME/objects/canino.webp" data-alt="a finished grill with silver script"></div>
+          <div class="slot slot--cover" data-img="img/HOME/step-3-def.webp" data-alt="a smile with an open-face silver cap"></div>
+        </div>
+        <div class="proc__side">
+          <p class="mono proc__k" data-scr>02 — how it's made</p>
+          <ol class="proc__list" id="procList">
+            <li><span class="mono">01 — the impression</span><h3 class="heavy">you bite.</h3><p class="txt">We send you a kit, or you come to Milano. Warm putty, thirty seconds, a perfect copy of every tooth.</p></li>
+            <li><span class="mono">02 — the wax</span><h3 class="heavy">we carve.</h3><p class="txt">Each grill is sculpted in wax on your copy, by hand, until the edges are as sharp as you asked for.</p></li>
+            <li><span class="mono">03 — the cast</span><h3 class="heavy">we pour.</h3><p class="txt">The wax burns out, the silver goes in. Then filing, setting, polishing: two weeks of making it look effortless.</p></li>
+            <li><span class="mono">04 — the fit</span><h3 class="heavy">you smile.</h3><p class="txt">It clicks on and stays on. You can take it off whenever you want. You won't want to.</p></li>
+          </ol>
+          <div class="proc__bar"><i id="procBar"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 4 · PRICES ========== -->
+    <section class="prices" id="prices">
+      <div class="wire wire--prices" data-wire="prices" aria-hidden="true"></div>
+      <header class="prices__head">
+        <h2 class="chrome prices__t" data-word="PRICES" aria-label="prices"></h2>
+        <p class="mono"><span data-scr>925 silver · made to order</span><br /><span data-scr>4 to 6 weeks, mouth to mouth</span></p>
+      </header>
+      <ul class="prices__list" id="pricesList"><!-- built from js/grillz.js --></ul>
+      <p class="prices__note txt">Gold, rhodium and stones on request. Prices are per piece, the impression kit is free.</p>
+    </section>
+
+    <!-- ========== 5 · QUESTIONS ========== -->
+    <section class="faq" id="faq">
+      <div class="drips" data-drips="4,1,6,3,5" aria-hidden="true"></div>
+      <img class="blob" data-blob="9" data-at="82% 40%" data-w="11vw" data-depth="1.2" alt="" />
+      <p class="mono faq__k" data-scr>03 — before you ask</p>
+      <ul class="faq__list" id="faqList"><!-- built from js/grillz.js --></ul>
+    </section>
+
+    <!-- ========== 6 · SEND US YOUR BITE ========== -->
+    <a href="custom.html" class="gcta" data-cursor="open wide">
+      <span class="mono gcta__k">ready?</span>
+      <span class="heavy gcta__pre">send us your</span>
+      <span class="chrome gcta__t" data-word="BITE" aria-label="bite"></span>
+      <span class="mono gcta__s">start a custom order →</span>
+    </a>
+
+    <!-- ========== FOOTER: every page ========== -->
+    <footer class="ft" id="ft">
+      <div class="wire wire--ft" data-wire="ft" aria-hidden="true"></div>
+      <div class="ft__aura" id="ftAura" aria-hidden="true"></div>
+      <div class="ft__top">
+        <p class="ft__lead heavy">bring your teeth.<br /><span class="out">we bring the metal.</span></p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>send us your bite →</a>
+      </div>
+      <div class="ft__grid">
+        <div><p class="ft__k mono" data-scr>the house</p><p class="ft__links"><a href="index.html" data-hover-scr>home</a><a href="objects.html" data-hover-scr>objects</a><a href="grillz.html" data-hover-scr>grillz</a><a href="lookbook.html" data-hover-scr>lookbook</a><a href="custom.html" data-hover-scr>custom</a><a href="atelier.html" data-hover-scr>atelier</a></p></div>
+        <div><p class="ft__k mono" data-scr>follow the bite</p><p class="ft__links"><a href="#" data-toast="instagram soon. we're still filing our bio." data-hover-scr>instagram</a><a href="#" data-toast="tiktok soon. the dogs are camera shy." data-hover-scr>tiktok</a><a href="#" data-toast="pinterest soon. pin your teeth." data-hover-scr>pinterest</a></p></div>
+        <div><p class="ft__k mono" data-scr>visit</p><p class="ft__links"><span>via dei denti 13</span><span>milano, by appointment</span><span>tue — sat, 12 — 20</span></p></div>
+        <div><p class="ft__k mono" data-scr>milano now</p><p class="ft__clock heavy" data-clock>00:00</p></div>
+      </div>
+      <p class="chrome ft__word" id="ftWord" data-word="MORSO" data-set="morso" aria-label="MORSO" data-cursor="touch it"></p>
+      <div class="ft__bottom mono">
+        <span>© 2026 MORSO — a concept. no teeth were harmed.</span>
+        <a href="#top" data-jump data-hover-scr>back to the top ↑</a>
+        <span class="ft-sign">concept, design &amp; code by <span class="sig">ghostly.grl</span> ♥</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js?v=20261022-8"></script>
+  <script src="js/main.js?v=20261022-8"></script>
+  <script src="js/grillz.js?v=20261022-8"></script>
+</body>
+  <!--
+   *    /\_/\      +
+       ( o.o )   <3  ghostly.grl
+   +    > ^ <          *
+-->
+</html>

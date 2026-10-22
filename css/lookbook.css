@@ -1,0 +1,68 @@
+/* =========================================================
+   MORSO — lookbook.css
+   the spinning wall · three chapters dealt like cards · credits · shop the look
+   concept, design & code by ghostly.grl ♥
+   ========================================================= */
+
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ================= 1 · THE TITLE + THE SPINNING WALL ================= */
+.lh { position: relative; height: 100svh; min-height: 640px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3vh; text-align: center; }
+.lh__stage { position: absolute; inset: 0; perspective: 1400px; display: grid; place-items: center; cursor: grab; touch-action: pan-y; }
+.lh__stage:active { cursor: grabbing; }
+.cyl { position: relative; width: var(--cw, 16vw); aspect-ratio: 4 / 5; transform-style: preserve-3d; will-change: transform; }
+.cyl figure { position: absolute; inset: 0; margin: 0; backface-visibility: hidden; overflow: hidden; border-radius: 6px; filter: grayscale(.3) brightness(.7); transition: filter .4s; }
+.cyl figure:hover { filter: none; }
+.cyl img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; user-select: none; }
+.lh__aura { position: absolute; left: 50%; top: 50%; width: min(70vh, 70vw); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .75) 35%, transparent 70%); pointer-events: none; }
+.lh > :not(.lh__stage):not(.lh__aura) { position: relative; z-index: 2; pointer-events: none; }
+.lh__meta { position: absolute !important; left: var(--gut); right: var(--gut); top: 74px; display: flex; justify-content: space-between; margin: 0; color: var(--mute); }
+.lh__t { --h: min(20vh, 10vw); }
+.lh__sub { margin: 0; font-size: clamp(22px, 2.6vw, 46px); }
+.lh__hint { position: absolute !important; left: 50%; bottom: var(--gut); translate: -50% 0; margin: 0; color: var(--mute); }
+@media (max-width: 760px) { .cyl { --cw: 34vw; } }
+
+/* ================= 2 · CHAPTERS ================= */
+.chap { position: relative; border-top: 1px solid var(--line); }
+.chap__pin { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; grid-template-columns: 1fr 1.3fr; align-items: center; gap: 4vw; padding: 90px var(--gut) 8vh; }
+.chap--right .chap__pin { grid-template-columns: 1.3fr 1fr; }
+.chap--right .chap__side { order: 2; }
+.chap__k { margin: 0 0 2vh; color: var(--red); }
+.chap__t { --h: min(16vh, 9vw); justify-content: flex-start; }
+.chap__p { margin: 4vh 0 0; max-width: 34ch; font-size: clamp(17px, 1.4vw, 22px); line-height: 1.3; }
+.chap__cap { margin: 5vh 0 0; color: var(--mute); }
+.chap__cap b { color: var(--bone); font-weight: 400; }
+.chap__c { color: var(--bone); }
+.chap__pile { position: relative; height: 76vh; }
+/* centred with inset + margin auto: gsap owns the transform, so no css translate here */
+.card-photo { --cw: min(30vw, 50vh); position: absolute; inset: 0; margin: auto; width: var(--cw); height: calc(var(--cw) * 1.25 + 30px); background: #fff; padding: 10px 10px 40px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .9); will-change: transform; }
+.card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-photo figcaption { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; color: #111; }
+.chap__bar { position: absolute; left: var(--gut); right: var(--gut); bottom: 3vh; height: 2px; background: var(--line); }
+.chap__bar i { display: block; height: 100%; background: var(--red); transform: scaleX(0); transform-origin: left; }
+@media (max-width: 860px) {
+  .chap__pin, .chap--right .chap__pin { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 2vh; }
+  .chap--right .chap__side { order: 0; }
+  .chap__p { display: none; }
+  .chap__cap { margin-top: 1.4vh; }
+  .card-photo { --cw: 64vw; }
+}
+
+/* ================= 3 · CREDITS ================= */
+.credits { position: relative; padding: 26vh var(--gut) 20vh; border-top: 1px solid var(--line); overflow: hidden; }
+.wire--credits { left: -10%; width: 120%; top: 8vh; --wh: clamp(36px, 4vw, 70px); --rot: -2deg; }
+.credits__k { margin: 0 0 5vh; color: var(--mute); }
+.credits__list { list-style: none; margin: 0; padding: 0; }
+.credit { display: grid; grid-template-columns: 1fr 2fr; gap: 3vw; align-items: baseline; padding: 2.4vh 0; border-top: 1px solid var(--line); }
+.credit:last-child { border-bottom: 1px solid var(--line); }
+.credit .mono { color: var(--mute); }
+.credit p { margin: 0; font-family: var(--f-heavy); font-weight: 900; text-transform: uppercase; letter-spacing: -.035em; font-size: clamp(22px, 3vw, 54px); line-height: .95; transition: color .3s, transform .5s var(--ease); }
+.credit:hover p { color: var(--red); transform: translateX(14px); }
+
+/* ================= 4 · SHOP THE LOOK ================= */
+.shop { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.6vh; padding: 18vh var(--gut); border-top: 1px solid var(--line); text-align: center; }
+.shop__k, .shop__s { color: var(--mute); }
+.shop__pre { font-size: clamp(28px, 4.2vw, 76px); }
+.shop__t { --h: min(26vh, 16vw); transition: transform .6s var(--ease); }
+.shop:hover .shop__t { transform: scale(1.06) rotate(2deg); }
+.shop:hover .shop__s { color: var(--red); }

@@ -1,0 +1,238 @@
+/* =========================================================
+   MORSO — style.css (shared, every page)
+   black, heavy metal, liquid chrome, barbed wire
+   concept, design & code by ghostly.grl ♥
+   ========================================================= */
+
+:root {
+  --ink: #000000;
+  --ink-2: #0a0a0a;
+  --ink-3: #141414;
+  --bone: #efece6;
+  --mute: #86837d;
+  --line: rgba(239, 236, 230, .16);
+  --red: #e0141f;
+
+  --f-heavy: 'Unbounded', 'Arial Black', sans-serif;
+  --f-sans: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --f-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --f-sig: 'Pinyon Script', cursive;
+
+  --gut: clamp(16px, 2.4vw, 34px);
+  --ease: cubic-bezier(.2, .8, .1, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--f-sans);
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.is-loading { overflow: hidden; }
+img { display: block; max-width: 100%; }
+figure, blockquote { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+::selection { background: var(--red); color: var(--bone); }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- type kit ---------- */
+/* heavy: a wide black grotesk, it should feel like it weighs something */
+.heavy { font-family: var(--f-heavy); font-weight: 900; text-transform: uppercase; line-height: .9; letter-spacing: -.035em; margin: 0; }
+.out { color: transparent; -webkit-text-stroke: max(1px, .02em) var(--bone); }
+.txt { font-family: var(--f-sans); font-weight: 500; letter-spacing: -.015em; }
+.mono { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; }
+.red { color: var(--red); }
+.c, .w { display: inline-block; }
+.blink { animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.ln { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.ln > span { display: block; will-change: transform; }
+
+/* chrome words: every letter is a real piece of liquid metal (img/type), never a fake texture */
+.chrome { display: flex; align-items: flex-end; justify-content: center; gap: calc(var(--h, 120px) * .02); margin: 0; }
+/* the liquid wobble is expensive: only the cover word gets it */
+.chrome--liquid { filter: url(#liquid); }
+.glyph { position: relative; display: block; height: var(--h, 120px); width: auto; will-change: transform; user-select: none; -webkit-user-drag: none; }
+.glyph img { height: 100%; width: auto; pointer-events: none; }
+/* a band of light that sweeps across the metal, masked by the letter itself */
+.glyph i {
+  position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  -webkit-mask: var(--m) center / 100% 100% no-repeat; mask: var(--m) center / 100% 100% no-repeat;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .9) 48%, rgba(255, 255, 255, .2) 52%, transparent 60%) 150% 0 / 300% 100% no-repeat;
+  animation: sheen 4.2s cubic-bezier(.6, 0, .3, 1) infinite; animation-delay: var(--d, 0s);
+}
+@keyframes sheen { 0%, 55% { background-position: 150% 0; } 100% { background-position: -50% 0; } }
+
+/* ---------- konami: x-ray ---------- */
+html.negative body { filter: invert(1); }
+
+/* ---------- atmosphere: grain, vignette, a light that follows you ---------- */
+.grain {
+  position: fixed; inset: -50%; z-index: 90; pointer-events: none; opacity: .12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(6) infinite;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); } 20% { transform: translate(-4%, 3%); } 40% { transform: translate(3%, -5%); }
+  60% { transform: translate(-2%, 6%); } 80% { transform: translate(5%, -2%); } 100% { transform: translate(0, 0); }
+}
+.vignette { position: fixed; inset: 0; z-index: 89; pointer-events: none; background: radial-gradient(120% 90% at 50% 50%, transparent 50%, rgba(0, 0, 0, .7)); }
+.spot { position: fixed; left: 0; top: 0; z-index: 0; width: 900px; height: 900px; margin: -450px 0 0 -450px; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgba(239, 236, 230, .07), transparent 60%); will-change: transform; }
+main { position: relative; z-index: 1; overflow-x: clip; }
+.sparks { position: fixed; inset: 0; z-index: 150; width: 100%; height: 100%; pointer-events: none; }
+
+.progress { position: fixed; right: 0; top: 0; bottom: 0; width: 2px; z-index: 120; pointer-events: none; }
+.progress i { display: block; width: 100%; height: 100%; background: var(--red); transform: scaleY(0); transform-origin: top; }
+
+.shake { animation: shake .45s cubic-bezier(.36, .07, .19, .97) both; }
+@keyframes shake {
+  10%, 90% { transform: translate3d(-2px, 3px, 0); }
+  20%, 80% { transform: translate3d(4px, -6px, 0); }
+  30%, 50%, 70% { transform: translate3d(-9px, 8px, 0); }
+  40%, 60% { transform: translate3d(9px, -4px, 0); }
+}
+
+/* ---------- barbed wire: the real photo, repeated along a line ---------- */
+.wire {
+  position: absolute; pointer-events: none; height: var(--wh, 70px); rotate: var(--rot, 0deg);
+  background: url('../img/metal/wire.webp') 0 50% / auto 100% repeat-x;
+  filter: drop-shadow(0 14px 14px rgba(0, 0, 0, .85));
+}
+
+/* ---------- real metal: drips hanging from an edge, blobs floating ---------- */
+.drips { position: absolute; left: 0; right: 0; top: 0; z-index: 4; display: flex; justify-content: space-around; align-items: flex-start; pointer-events: none; }
+.drips img { width: clamp(70px, 9vw, 150px); height: auto; transform-origin: 50% 0; will-change: transform; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .7)); }
+.blob { position: absolute; z-index: 3; height: auto; pointer-events: none; will-change: transform; filter: drop-shadow(0 24px 30px rgba(0, 0, 0, .8)); user-select: none; }
+
+/* ---------- image slots ---------- */
+.slot {
+  position: relative; overflow: hidden;
+  aspect-ratio: var(--ratio, auto);
+  background: var(--ink-3);
+  outline: 1px dashed rgba(239, 236, 230, .28); outline-offset: -6px;
+}
+.slot.has-img { outline: 0; background: none; }
+.slot > img { width: 100%; height: 100%; object-fit: cover; }
+/* no photo yet: a piece of real chrome turns slowly inside the frame */
+.slot.is-empty { background: radial-gradient(70% 60% at 50% 45%, #1c1c1c, var(--ink-2)); }
+.slot__blob { position: absolute; left: 50%; top: 46%; width: 58%; max-height: 70%; object-fit: contain; translate: -50% -50%; animation: turn 14s linear infinite; filter: drop-shadow(0 20px 26px rgba(0, 0, 0, .8)); pointer-events: none; }
+@keyframes turn { to { rotate: 360deg; } }
+.slot--cover { position: absolute; inset: 0; }
+/* cut-outs (transparent png/webp): shown whole, floating, never cropped */
+.slot--cut, .slot--cut.has-img { background: none; outline: 0; }
+.slot--cut > img { object-fit: contain; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .8)); }
+.slot-label {
+  position: absolute; left: 10px; bottom: 10px; right: 10px; z-index: 1;
+  display: flex; flex-direction: column; gap: 3px;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .03em; color: var(--bone); pointer-events: none;
+}
+.slot-label small { font-family: var(--f-sans); font-weight: 500; font-size: 12px; letter-spacing: 0; color: var(--mute); }
+.slot.has-img .slot-label { display: none; }
+.tiles { position: absolute; inset: -1px; z-index: 3; display: grid; grid-template-columns: repeat(var(--tc, 8), 1fr); pointer-events: none; }
+.tiles i { background: var(--ink); }
+
+/* ---------- loader ---------- */
+.loader { position: fixed; inset: 0; z-index: 200; background: var(--ink); display: grid; place-items: center; }
+.ld-num { margin: 0; font-family: var(--f-heavy); font-weight: 900; font-size: min(40vh, 40vw); line-height: .8; letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
+.ld-bot { position: absolute; left: var(--gut); right: var(--gut); bottom: var(--gut); display: flex; justify-content: space-between; margin: 0; color: var(--mute); }
+.ld-bot b { color: var(--bone); font-weight: 400; }
+
+/* ---------- cursor ---------- */
+.has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
+.cursor { position: fixed; left: 0; top: 0; z-index: 170; pointer-events: none; opacity: 0; transition: opacity .3s; mix-blend-mode: difference; }
+.cursor.is-on { opacity: 1; }
+.cursor__dot { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: #fff; transition: transform .45s var(--ease); }
+.cursor.is-hover .cursor__dot { transform: scale(4.5); }
+.cursor.is-down .cursor__dot { transform: scale(.4); }
+.cursor__label { position: absolute; left: 22px; top: -6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #fff; white-space: nowrap; opacity: 0; transition: opacity .2s; }
+.cursor.has-label .cursor__label { opacity: 1; }
+.cursor.has-label .cursor__dot { transform: scale(1.4); }
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 160;
+  transform: translate(-50%, calc(100% + 40px));
+  max-width: min(460px, calc(100vw - 32px));
+  background: var(--bone); color: var(--ink);
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; line-height: 1.5;
+  padding: 12px 18px;
+  transition: transform .6s var(--ease), visibility 0s .6s; visibility: hidden; pointer-events: none;
+}
+.toast::before { content: '● '; color: var(--red); }
+.toast.is-on { transform: translate(-50%, 0); visibility: visible; transition: transform .6s var(--ease); }
+
+/* ---------- header ---------- */
+.hdr {
+  position: fixed; inset: 0 0 auto; z-index: 100;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 18px var(--gut);
+  transition: transform .7s var(--ease);
+}
+.hdr.is-hidden { transform: translateY(-120%); }
+/* the nav stays readable over drips and chrome with a shadow on the letters, not a black band (that band cut the text scrolling under it) */
+.hdr a { text-shadow: 0 0 10px #000, 0 0 3px #000, 0 0 1px #000; }
+.nav { display: flex; gap: 22px; }
+.nav a, .hdr__cta { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; position: relative; }
+.nav a::after, .hdr__cta::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease); }
+.nav a:hover::after, .hdr__cta:hover::after { transform: scaleX(1); transform-origin: left; }
+.logo { font-family: var(--f-heavy); font-weight: 900; font-size: 22px; line-height: 1; letter-spacing: -.04em; }
+.hdr__cta { justify-self: end; }
+@media (max-width: 760px) {
+  .hdr { grid-template-columns: 1fr auto; }
+  .nav { display: none; }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 18px 30px; border: 1px solid var(--bone); border-radius: 999px;
+  transition: color .4s var(--ease);
+}
+.btn::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--bone); border-radius: inherit; transform: scaleY(0); transform-origin: bottom; transition: transform .5s var(--ease); }
+.btn:hover { color: var(--ink); }
+.btn:hover::before { transform: scaleY(1); }
+.btn--solid { background: var(--bone); color: var(--ink); border-color: var(--bone); font-weight: 700; }
+.btn--solid::before { background: var(--red); }
+.btn--solid:hover { color: var(--bone); }
+
+/* ---------- footer: wire, aura, and MORSO rising out of the dark ---------- */
+.ft { position: relative; padding: 18vh var(--gut) 28px; overflow: hidden; border-top: 1px solid var(--line); }
+.wire--ft { left: -5%; width: 110%; top: 4vh; --wh: clamp(36px, 4vw, 70px); --rot: -2deg; z-index: 2; }
+.ft__aura { position: absolute; left: 50%; bottom: -34vw; z-index: 0; width: 96vw; aspect-ratio: 1; margin-left: -48vw; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .55) 0%, rgba(224, 20, 31, .55) 24%, rgba(90, 0, 14, .35) 46%, transparent 66%); filter: blur(40px); pointer-events: none; will-change: transform; animation: aura 5s ease-in-out infinite; }
+@keyframes aura { 50% { opacity: .7; filter: blur(60px); } }
+.ft > :not(.ft__aura) { position: relative; z-index: 1; }
+.ft__top { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; padding-bottom: 6vh; border-bottom: 1px solid var(--line); }
+.ft__lead { font-size: clamp(34px, 4.6vw, 86px); }
+.ft__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding-top: 4vh; }
+.ft__k { margin: 0 0 12px; color: var(--mute); }
+.ft__links { display: flex; flex-direction: column; gap: 6px; margin: 0; font-family: var(--f-mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+.ft__links a { width: fit-content; }
+.ft__links a:hover { color: var(--red); }
+.ft__links span { color: var(--mute); }
+.ft__clock { font-size: 52px; margin: 0; font-variant-numeric: tabular-nums; }
+.ft__word { --h: min(25vw, 50vh); margin: 12vh auto 6vh; cursor: pointer; }
+.ft__word .glyph { transform-origin: 50% 100%; }
+.ft__bottom { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; color: var(--mute); }
+.ft__bottom a:hover { color: var(--bone); }
+.ft-sign { color: var(--bone); }
+.ft-sign .sig { font-family: var(--f-sig); font-size: 30px; letter-spacing: 0; text-transform: none; margin: 0 3px; }
+@media (max-width: 760px) { .ft__grid { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .loader, .tiles { display: none; }
+  .chrome--liquid { filter: none; }
+}

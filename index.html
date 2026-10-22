@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <title>MORSO — jewellery that bites</title>
+  <meta name="description" content="MORSO is an atelier of grillz, rings and relics, cast in silver from the bite of whoever wears them. Jewellery that bites." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- concept, design & code by ghostly.grl ♥ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="preload" href="img/HOME/jaw-top.webp" as="image" />
+  <link rel="preload" href="img/HOME/jaw-bottom.webp" as="image" />
+  <link rel="preload" href="img/type/morso-1.webp" as="image" />
+  <link rel="stylesheet" href="css/style.css?v=20261022-8" />
+  <link rel="stylesheet" href="css/home.css?v=20261022-8" />
+</head>
+<body class="is-loading" data-page="home">
+
+  <!-- the liquid: chrome letters wobble through this -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="liquid" x="-10%" y="-20%" width="120%" height="140%">
+        <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="4" result="n" />
+        <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ================= LOADER: the silver warms up ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <p class="ld-num" id="ldNum">00</p>
+    <p class="ld-bot mono"><span id="ldMsg">warming the silver</span><span>milano — <b data-clock>00:00</b></span></p>
+  </div>
+
+  <!-- global fx -->
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hdr" id="hdr">
+    <nav class="nav" aria-label="Main">
+      <a href="objects.html" data-hover-scr>objects</a>
+      <a href="grillz.html" data-hover-scr>grillz</a>
+      <a href="lookbook.html" data-hover-scr>lookbook</a>
+      <a href="custom.html" data-hover-scr>custom</a>
+      <a href="atelier.html" data-hover-scr>atelier</a>
+    </nav>
+    <a href="index.html" class="logo" aria-label="MORSO home">MORSO</a>
+    <a href="#custom" class="hdr__cta" data-jump data-hover-scr>send us your bite</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== 1 · THE MOUTH: liquid letters, a real jaw ========== -->
+    <section class="mouth" id="mouth">
+      <div class="mouth__pin" id="mouthPin" data-cursor="click = bite">
+        <img class="blob" data-blob="6" data-at="7% 26%" data-w="10vw" data-depth="1.6" alt="" />
+        <img class="blob" data-blob="3" data-at="88% 64%" data-w="12vw" data-depth="-1.2" alt="" />
+        <img class="blob" data-blob="5" data-at="80% 14%" data-w="5vw" data-depth="2" alt="" />
+        <div class="wire wire--hero" data-wire="hero" aria-hidden="true"></div>
+        <div class="jaw jaw--top" id="jawTop"><img src="img/HOME/jaw-top.webp" alt="" draggable="false" /></div>
+        <h1 class="chrome chrome--liquid cover__word" id="coverWord" data-word="MORSO" data-set="morso" aria-label="MORSO"></h1>
+        <div class="jaw jaw--bottom" id="jawBot"><img src="img/HOME/jaw-bottom.webp" alt="" draggable="false" /></div>
+
+        <div class="cover">
+          <p class="cover__tl mono"><span data-scr>N°01 — autumn / winter 2026</span><span data-scr>grillz · rings · relics</span></p>
+          <p class="cover__tr mono"><span data-scr>cast in milano</span><span data-scr>925 silver, nothing plated</span></p>
+          <p class="cover__bl heavy">jewellery<br /><span class="out">that bites</span></p>
+          <p class="cover__br mono"><span data-scr>click to bite</span> <span class="red blink">●</span> <span data-scr>scroll to go in</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 2 · BEWARE OF DOGS ========== -->
+    <section class="dogs" id="dogs">
+      <div class="dogs__pin">
+        <div class="drips" data-drips="1,4,2,6,3" aria-hidden="true"></div>
+        <p class="chrome dogs__huge" id="dogsHuge" data-word="BEWARE OF DOGS" aria-hidden="true"></p>
+        <figure class="dogs__a" id="dogsA"><div class="slot slot--cover" data-tiles data-img="img/HOME/dogs-1.webp" data-alt="two black dobermanns in spiked muzzles"></div></figure>
+        <figure class="dogs__b" id="dogsB"><div class="slot slot--cover" data-img="img/HOME/dogs-2.webp" data-alt="a girl in silver with a chrome dobermann"></div></figure>
+        <figure class="dogs__c" id="dogsC"><div class="slot slot--cover" data-img="img/HOME/dogs-3.webp" data-alt="a dog's teeth held open by hands in red rings"></div></figure>
+        <div class="dogs__txt">
+          <p class="mono" data-scr>01 — the house</p>
+          <h2 class="heavy dogs__t" data-chars>they bite.<br /><span class="out">so do we.</span></h2>
+          <p class="txt" data-lines>MORSO started with a muzzle. Leather, steel, forty-eight spikes. We took it off the dog and put it on a neck. Everything since then has had teeth.</p>
+          <p class="dogs__force mono">bite force <b id="biteN">0000</b> N</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 3 · MARQUEE ========== -->
+    <div class="marq" aria-hidden="true">
+      <div class="marq__row" data-dir="1"><p class="marq__track marq__track--chrome"></p></div>
+      <div class="marq__row marq__row--out" data-dir="-1"><p class="marq__track heavy"></p></div>
+    </div>
+
+    <!-- ========== 4 · THE BLOOM: soft things with thorns ========== -->
+    <section class="bloom" id="bloom">
+      <img class="blob" data-blob="2" data-at="6% 14%" data-w="12vw" data-depth="1.4" alt="" />
+      <img class="blob" data-blob="9" data-at="84% 70%" data-w="9vw" data-depth="-1" alt="" />
+      <p class="bloom__l heavy" data-chars>soft<br />things</p>
+      <figure class="bloom__fig" id="bloomFig">
+        <div class="slot slot--cover slot--cut" data-img="img/HOME/bloom.webp" data-alt="a lily with a chrome stem and veins"></div>
+        <div class="wire wire--bloom1" data-wire="bloom" aria-hidden="true"></div>
+        <div class="wire wire--bloom2" data-wire="bloom2" aria-hidden="true"></div>
+      </figure>
+      <div class="bloom__r"><p class="heavy" data-chars>with</p><p class="chrome bloom__chrome" data-word="THORNS" aria-label="thorns"></p></div>
+      <figure class="bloom__mini" data-speed="-.25"><div class="slot slot--cut" data-img="img/HOME/bloom-2.webp" data-alt="a red rose half cast in silver"></div></figure>
+      <p class="bloom__note txt" data-lines>Every piece is a flower that learned to defend itself. Petals cast in silver, stems wrapped in wire, thorns filed sharp enough to mean it.</p>
+    </section>
+
+    <!-- ========== 5 · THE INDEX ========== -->
+    <section class="index" id="objects">
+      <img class="blob" data-blob="1" data-at="78% 6%" data-w="9vw" data-depth="1.2" alt="" />
+      <header class="index__head">
+        <h2 class="chrome index__t" data-word="OBJECTS" aria-label="objects"></h2>
+        <p class="mono"><span data-scr>six pieces / six bites</span><br /><span data-scr>hover to look, click to keep</span></p>
+      </header>
+      <div class="index__cols mono" aria-hidden="true"><span>n°</span><span>name</span><span>what it is</span><span>metal</span><span>price</span></div>
+      <ul class="index__list" id="indexList"><!-- rows built from js/data.js --></ul>
+      <div class="peek" id="peek" aria-hidden="true"></div>
+    </section>
+
+    <!-- ========== 6 · GRILLZ ========== -->
+    <section class="steps" id="grillz">
+      <div class="steps__pin">
+        <div class="steps__media" id="stepsMedia">
+          <div class="slot slot--cover" data-img="img/HOME/step-1.webp" data-alt="a black grill on a white dental cast"></div>
+          <div class="slot slot--cover" data-img="img/HOME/step-2.webp" data-alt="a shape of liquid chrome"></div>
+          <div class="slot slot--cover" data-img="img/HOME/step-3-def.webp" data-alt="a smile with an open-face silver cap and a little star"></div>
+          <div class="steps__num heavy" aria-hidden="true"><span id="stepsNum">01</span></div>
+        </div>
+        <div class="steps__side">
+          <p class="mono steps__k" data-scr>03 — grillz</p>
+          <h2 class="chrome steps__t" data-word="GRILLZ" aria-label="grillz"></h2>
+          <p class="heavy steps__sub">made from your bite</p>
+          <ol class="steps__list" id="stepsList">
+            <li><span class="mono">01 — impression</span><p class="txt">You bite into a tray. We get every tooth, every gap, every crooked thing you love about your mouth.</p></li>
+            <li><span class="mono">02 — cast</span><p class="txt">The wax becomes silver. Fang caps, open faces, spikes, full sets: whatever you dare to wear.</p></li>
+            <li><span class="mono">03 — fit</span><p class="txt">It clicks on. It doesn't come off until you want it to. Then you smile at someone.</p></li>
+          </ol>
+          <div class="steps__bar"><i id="stepsBar"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 7 · THE WALL ========== -->
+    <section class="wall" id="wall">
+      <div class="wall__pin">
+        <p class="wall__word heavy" id="wallWord" aria-hidden="true">open wide — open wide — open wide —</p>
+        <div class="wire wire--wall" data-wire="wall" aria-hidden="true"></div>
+        <div class="wall__track" id="wallTrack">
+          <figure class="wall__it wall__it--a"><div class="slot" data-img="img/HOME/wall-1.webp" data-alt="a hand grown thorns, wearing rings"></div><figcaption class="mono">look 01 — the hand that grew thorns</figcaption></figure>
+          <figure class="wall__it wall__it--b"><div class="slot" data-img="img/HOME/wall-2.webp" data-alt="a back with a spine cast in silver"></div><figcaption class="mono">look 02 — spina, worn</figcaption></figure>
+          <figure class="wall__it wall__it--c"><div class="slot" data-img="img/HOME/wall-3.webp" data-alt="an open mouth with a full silver grill and fangs"></div><figcaption class="mono">look 03 — full set, fangs out</figcaption></figure>
+          <figure class="wall__it wall__it--d"><div class="slot" data-img="img/HOME/wall-4.webp" data-alt="chrome claws over a face"></div><figcaption class="mono">look 04 — claws</figcaption></figure>
+          <figure class="wall__it wall__it--e"><div class="slot" data-img="img/HOME/wall-5.webp" data-alt="a dobermann with spikes and a crystal collar"></div><figcaption class="mono">look 05 — good boy</figcaption></figure>
+          <figure class="wall__it wall__it--f"><div class="slot" data-img="img/HOME/wall-6.webp" data-alt="a face with liquid chrome dripping over it"></div><figcaption class="mono">look 06 — colata, on a face</figcaption></figure>
+          <figure class="wall__it wall__it--g"><div class="slot" data-img="img/HOME/wall-7.webp" data-alt="hands in claw rings holding white hair"></div><figcaption class="mono">look 07 — thorne × 10</figcaption></figure>
+        </div>
+        <p class="wall__count mono"><b id="wallNow">01</b> / 07</p>
+      </div>
+    </section>
+
+    <!-- ========== 8 · CUSTOM ========== -->
+    <section class="custom" id="custom">
+      <div class="drips" data-drips="5,3,6,1,4,2" aria-hidden="true"></div>
+      <img class="blob" data-blob="4" data-at="8% 30%" data-w="11vw" data-depth="1.2" alt="" />
+      <img class="blob" data-blob="7" data-at="86% 22%" data-w="8vw" data-depth="-1.4" alt="" />
+      <div class="custom__in">
+        <p class="mono" data-scr>04 — custom</p>
+        <p class="heavy custom__pre">send us your</p>
+        <h2 class="chrome custom__t" id="customT" data-word="BITE" aria-label="bite"></h2>
+        <p class="txt custom__s">Tell us what you want in your mouth. We'll tell you if it's possible. It usually is.</p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>start a custom order →</a>
+      </div>
+      <div class="custom__jaw" id="customJaw"><img src="img/HOME/jaw-bottom.webp" alt="" draggable="false" /></div>
+    </section>
+
+    <!-- ========== FOOTER: every page ========== -->
+    <footer class="ft" id="ft">
+      <div class="wire wire--ft" data-wire="ft" aria-hidden="true"></div>
+      <div class="ft__aura" id="ftAura" aria-hidden="true"></div>
+      <div class="ft__top">
+        <p class="ft__lead heavy">bring your teeth.<br /><span class="out">we bring the metal.</span></p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>send us your bite →</a>
+      </div>
+      <div class="ft__grid">
+        <div><p class="ft__k mono" data-scr>the house</p><p class="ft__links"><a href="index.html" data-hover-scr>home</a><a href="objects.html" data-hover-scr>objects</a><a href="grillz.html" data-hover-scr>grillz</a><a href="lookbook.html" data-hover-scr>lookbook</a><a href="custom.html" data-hover-scr>custom</a><a href="atelier.html" data-hover-scr>atelier</a></p></div>
+        <div><p class="ft__k mono" data-scr>follow the bite</p><p class="ft__links"><a href="#" data-toast="instagram soon. we're still filing our bio." data-hover-scr>instagram</a><a href="#" data-toast="tiktok soon. the dogs are camera shy." data-hover-scr>tiktok</a><a href="#" data-toast="pinterest soon. pin your teeth." data-hover-scr>pinterest</a></p></div>
+        <div><p class="ft__k mono" data-scr>visit</p><p class="ft__links"><span>via dei denti 13</span><span>milano, by appointment</span><span>tue — sat, 12 — 20</span></p></div>
+        <div><p class="ft__k mono" data-scr>milano now</p><p class="ft__clock heavy" data-clock>00:00</p></div>
+      </div>
+      <p class="chrome ft__word" id="ftWord" data-word="MORSO" data-set="morso" aria-label="MORSO" data-cursor="touch it"></p>
+      <div class="ft__bottom mono">
+        <span>© 2026 MORSO — a concept. no teeth were harmed.</span>
+        <a href="#top" data-jump data-hover-scr>back to the top ↑</a>
+        <span class="ft-sign">concept, design &amp; code by <span class="sig">ghostly.grl</span> ♥</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js?v=20261022-8"></script>
+  <script src="js/main.js?v=20261022-8"></script>
+  <script src="js/home.js?v=20261022-8"></script>
+</body>
+  <!--
+   *    /\_/\      +
+       ( o.o )   <3  ghostly.grl
+   +    > ^ <          *
+-->
+</html>

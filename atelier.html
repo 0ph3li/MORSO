@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <title>MORSO — the atelier</title>
+  <meta name="description" content="The atelier in Milano: a kiln, thirty-eight files, a lot of wax and two dobermanns. Come for a fitting, by appointment." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- concept, design & code by ghostly.grl ♥ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20261022-8" />
+  <link rel="stylesheet" href="css/atelier.css?v=20261022-8" />
+</head>
+<body class="is-loading" data-page="atelier">
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="liquid" x="-10%" y="-20%" width="120%" height="140%">
+        <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="4" result="n" />
+        <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ================= LOADER ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <p class="ld-num" id="ldNum">00</p>
+    <p class="ld-bot mono"><span id="ldMsg">warming the silver</span><span>milano — <b data-clock>00:00</b></span></p>
+  </div>
+
+  <!-- global fx -->
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hdr" id="hdr">
+    <nav class="nav" aria-label="Main">
+      <a href="objects.html" data-hover-scr>objects</a>
+      <a href="grillz.html" data-hover-scr>grillz</a>
+      <a href="lookbook.html" data-hover-scr>lookbook</a>
+      <a href="custom.html" data-hover-scr>custom</a>
+      <a href="atelier.html" aria-current="page" data-hover-scr>atelier</a>
+    </nav>
+    <a href="index.html" class="logo" aria-label="MORSO home">MORSO</a>
+    <a href="#visit" class="hdr__cta" data-jump data-hover-scr>visit us</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== 1 · THE TITLE: are we open? ========== -->
+    <section class="ah" id="ah">
+      <div class="ah__aura" aria-hidden="true"></div>
+      <div class="drips" data-drips="2,5,1,6,3" aria-hidden="true"></div>
+      <img class="blob" data-blob="4" data-at="7% 58%" data-w="10vw" data-depth="1.4" alt="" />
+      <img class="blob" data-blob="8" data-at="85% 30%" data-w="9vw" data-depth="-1.2" alt="" />
+      <p class="ah__meta mono"><span data-scr>N°04 — the atelier</span><span data-scr>via dei denti 13 · milano</span></p>
+      <h1 class="chrome chrome--liquid ah__t" id="ahT" data-word="ATELIER" aria-label="atelier"></h1>
+      <p class="ah__status heavy" id="status"><i class="ah__dot" aria-hidden="true"></i><span id="statusTxt">open now</span></p>
+      <p class="ah__when mono" id="statusWhen">milano <b data-clock>00:00</b></p>
+    </section>
+
+    <!-- ========== 2 · WHO BITES ========== -->
+    <section class="who" id="who">
+      <div class="wire wire--who" data-wire="who" aria-hidden="true"></div>
+      <p class="mono who__k" data-scr>01 — who bites</p>
+      <p class="who__big heavy" data-lines>Two pairs of hands, two dobermanns and a kiln that never really cools down.</p>
+      <div class="who__cols">
+        <p class="txt" data-lines>MORSO started in a basement with a jar of dental wax and a dog that wouldn't stop chewing the furniture. We made her a muzzle with spikes. Somebody asked for one as a choker. Then somebody asked for teeth.</p>
+        <p class="txt" data-lines>Everything is still made here, by hand, one piece at a time. No catalogue in a warehouse, no plating, no plastic. If you can't see the file marks, look closer: they're there on purpose.</p>
+      </div>
+    </section>
+
+    <!-- ========== 3 · THE BENCH: sideways ========== -->
+    <section class="bench" id="bench">
+      <div class="bench__pin">
+        <header class="bench__head"><p class="mono" data-scr>02 — the bench</p><p class="mono bench__count"><b id="benchNow">01</b> / 05</p></header>
+        <div class="bench__track" id="benchTrack">
+          <article class="tool"><div class="tool__img"><img src="img/ATELIER/kiln.webp" alt="a chrome heart melting, with red inside" /></div><p class="tool__n heavy">1400°</p><h3 class="tool__t heavy">the kiln</h3><p class="txt tool__p">Everything melts in here eventually, hearts included. It hums all night. The dogs sleep next to it.</p></article>
+          <article class="tool"><div class="tool__img"><img src="img/ATELIER/files.webp" alt="a flame cut in silver" /></div><p class="tool__n heavy">×38</p><h3 class="tool__t heavy">the files</h3><p class="txt tool__p">A flame starts as a block of silver. Thirty-eight files later, it burns. Every thorn goes through nine of them.</p></article>
+          <article class="tool"><div class="tool__img"><img src="img/ATELIER/wax.webp" alt="a full silver grill on a white cast" /></div><p class="tool__n heavy">2 kg</p><h3 class="tool__t heavy">the wax</h3><p class="txt tool__p">Two kilos of dental wax a month, most of it in the shape of other people's teeth, until it turns into silver.</p></article>
+          <article class="tool"><div class="tool__img"><img src="img/ATELIER/mirror.webp" alt="a heart made of chrome thorns" /></div><p class="tool__n heavy">1</p><h3 class="tool__t heavy">the mirror</h3><p class="txt tool__p">Its frame is a heart made of thorns. You try the piece on, you look, you decide. It has never lied.</p></article>
+          <article class="tool"><div class="tool__img"><img src="img/ATELIER/dogs.webp" alt="a dobermann with a chrome chain collar" /></div><p class="tool__n heavy">2</p><h3 class="tool__t heavy">the dogs</h3><p class="txt tool__p">Ossa and Morso. Security, quality control, emotional support. The muzzles were the first thing we ever made.</p></article>
+        </div>
+        <div class="bench__bar"><i id="benchBar"></i></div>
+      </div>
+    </section>
+
+    <!-- ========== 4 · NUMBERS ========== -->
+    <section class="nums" id="nums">
+      <p class="mono nums__k" data-scr>03 — so far</p>
+      <ul class="nums__list">
+        <li><b class="heavy" data-to="1284">0</b><span class="mono">teeth dressed</span></li>
+        <li><b class="heavy" data-to="312">0</b><span class="mono">grillz cast</span></li>
+        <li><b class="heavy" data-to="96">0</b><span class="mono">kg of silver</span></li>
+        <li><b class="heavy" data-to="0">0</b><span class="mono">pieces of plastic</span></li>
+      </ul>
+    </section>
+
+    <!-- ========== 5 · VISIT ========== -->
+    <section class="visit" id="visit">
+      <div class="visit__map" aria-label="a map of the street around the atelier">
+        <svg viewBox="0 0 600 600" id="mapSvg" aria-hidden="true">
+          <g class="map__streets">
+            <path d="M-20 140 L620 100" /><path d="M-20 330 L620 360" /><path d="M-20 500 L620 470" />
+            <path d="M120 -20 L160 620" /><path d="M330 -20 L300 620" /><path d="M480 -20 L520 620" />
+            <path d="M-20 600 L400 -20" class="map__diag" />
+          </g>
+          <g class="map__labels">
+            <text x="20" y="128">via dei denti</text><text x="20" y="320">corso dei morsi</text><text x="340" y="40" transform="rotate(84 340 40)">via spina</text>
+          </g>
+          <g class="map__pin" id="mapPin" transform="translate(316 344)">
+            <circle r="34" class="map__ring" /><circle r="10" class="map__dot" />
+          </g>
+        </svg>
+        <p class="visit__pinlabel mono">morso — via dei denti 13</p>
+      </div>
+      <div class="visit__side">
+        <p class="mono visit__k" data-scr>04 — visit</p>
+        <h2 class="heavy visit__t" data-chars>come in.<br /><span class="out">open wide.</span></h2>
+        <p class="txt visit__p">Fittings and impressions by appointment. Ring the bell twice, the dogs will tell us you're here.</p>
+        <ul class="hours mono" id="hours"><!-- built from js/atelier.js --></ul>
+        <p class="txt visit__how">M1 Porta Venezia, then six minutes on foot. Look for the door with the teeth on it.</p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>book a fitting →</a>
+      </div>
+    </section>
+
+    <!-- ========== 6 · OVERHEARD ========== -->
+    <section class="heard" id="heard" aria-label="overheard in the atelier">
+      <p class="mono heard__k" data-scr>05 — overheard in the atelier</p>
+      <div class="heard__row" data-dir="1"><p class="heard__track heavy" id="heard1"></p></div>
+      <div class="heard__row heard__row--out" data-dir="-1"><p class="heard__track heavy" id="heard2"></p></div>
+    </section>
+
+    <!-- ========== FOOTER: every page ========== -->
+    <footer class="ft" id="ft">
+      <div class="wire wire--ft" data-wire="ft" aria-hidden="true"></div>
+      <div class="ft__aura" id="ftAura" aria-hidden="true"></div>
+      <div class="ft__top">
+        <p class="ft__lead heavy">bring your teeth.<br /><span class="out">we bring the metal.</span></p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>send us your bite →</a>
+      </div>
+      <div class="ft__grid">
+        <div><p class="ft__k mono" data-scr>the house</p><p class="ft__links"><a href="index.html" data-hover-scr>home</a><a href="objects.html" data-hover-scr>objects</a><a href="grillz.html" data-hover-scr>grillz</a><a href="lookbook.html" data-hover-scr>lookbook</a><a href="custom.html" data-hover-scr>custom</a><a href="atelier.html" data-hover-scr>atelier</a></p></div>
+        <div><p class="ft__k mono" data-scr>follow the bite</p><p class="ft__links"><a href="#" data-toast="instagram soon. we're still filing our bio." data-hover-scr>instagram</a><a href="#" data-toast="tiktok soon. the dogs are camera shy." data-hover-scr>tiktok</a><a href="#" data-toast="pinterest soon. pin your teeth." data-hover-scr>pinterest</a></p></div>
+        <div><p class="ft__k mono" data-scr>visit</p><p class="ft__links"><span>via dei denti 13</span><span>milano, by appointment</span><span>tue — sat, 12 — 20</span></p></div>
+        <div><p class="ft__k mono" data-scr>milano now</p><p class="ft__clock heavy" data-clock>00:00</p></div>
+      </div>
+      <p class="chrome ft__word" id="ftWord" data-word="MORSO" data-set="morso" aria-label="MORSO" data-cursor="touch it"></p>
+      <div class="ft__bottom mono">
+        <span>© 2026 MORSO — a concept. no teeth were harmed.</span>
+        <a href="#top" data-jump data-hover-scr>back to the top ↑</a>
+        <span class="ft-sign">concept, design &amp; code by <span class="sig">ghostly.grl</span> ♥</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js?v=20261022-8"></script>
+  <script src="js/main.js?v=20261022-8"></script>
+  <script src="js/atelier.js?v=20261022-8"></script>
+</body>
+  <!--
+   *    /\_/\      +
+       ( o.o )   <3  ghostly.grl
+   +    > ^ <          *
+-->
+</html>

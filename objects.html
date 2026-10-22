@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <title>MORSO — the objects</title>
+  <meta name="description" content="Six pieces cast from six bites: grillz, a spine, a cross, a crown of thorns, a melted ring and a muzzle turned choker." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- concept, design & code by ghostly.grl ♥ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="preload" href="img/HOME/objects/canino.webp" as="image" />
+  <link rel="stylesheet" href="css/style.css?v=20261022-8" />
+  <link rel="stylesheet" href="css/objects.css?v=20261022-8" />
+</head>
+<body class="is-loading" data-page="objects">
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="liquid" x="-10%" y="-20%" width="120%" height="140%">
+        <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="4" result="n" />
+        <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ================= LOADER ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <p class="ld-num" id="ldNum">00</p>
+    <p class="ld-bot mono"><span id="ldMsg">warming the silver</span><span>milano — <b data-clock>00:00</b></span></p>
+  </div>
+
+  <!-- global fx -->
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hdr" id="hdr">
+    <nav class="nav" aria-label="Main">
+      <a href="objects.html" aria-current="page" data-hover-scr>objects</a>
+      <a href="grillz.html" data-hover-scr>grillz</a>
+      <a href="lookbook.html" data-hover-scr>lookbook</a>
+      <a href="custom.html" data-hover-scr>custom</a>
+      <a href="atelier.html" data-hover-scr>atelier</a>
+    </nav>
+    <a href="index.html" class="logo" aria-label="MORSO home">MORSO</a>
+    <a href="#kept" class="hdr__cta" data-jump data-hover-scr>kept <b id="hdrKept">0</b></a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== 1 · THE TITLE ========== -->
+    <section class="oh" id="oh">
+      <img class="blob" data-blob="8" data-at="6% 18%" data-w="11vw" data-depth="1.4" alt="" />
+      <img class="blob" data-blob="6" data-at="84% 62%" data-w="9vw" data-depth="-1.2" alt="" />
+      <img class="blob" data-blob="5" data-at="72% 12%" data-w="4vw" data-depth="2" alt="" />
+      <p class="oh__meta mono"><span data-scr>N°01 — the objects</span><span data-scr>six pieces · six bites · cast to order</span></p>
+      <h1 class="chrome chrome--liquid oh__t" id="ohT" data-word="OBJECTS" aria-label="objects"></h1>
+      <div class="wire wire--oh" data-wire="oh" aria-hidden="true"></div>
+      <p class="oh__lead heavy">pick one.<br /><span class="out">it picks you back.</span></p>
+      <p class="oh__hint mono"><span data-scr>scroll — one piece at a time</span> <span class="red blink">●</span></p>
+    </section>
+
+    <!-- ========== 2 · THE STAGE: one piece at a time ========== -->
+    <section class="stage" id="stage">
+      <div class="stage__pin" id="stagePin">
+        <p class="stage__ghost heavy" id="stageGhost" aria-hidden="true">canino</p>
+        <ol class="stage__list mono" id="stageList"><!-- built from js/data.js --></ol>
+
+        <div class="stage__obj" id="stageObj" data-cursor="drag the light">
+          <div class="stage__img" id="stageImg"></div>
+          <i class="stage__floor" aria-hidden="true"></i>
+        </div>
+
+        <div class="stage__card">
+          <p class="stage__n mono"><span id="stN">01</span> / <span id="stT">06</span></p>
+          <h2 class="stage__name heavy" id="stName">canino</h2>
+          <p class="stage__what txt" id="stWhat"></p>
+          <dl class="stage__spec">
+            <div><dt class="mono">metal</dt><dd class="mono" id="stMetal"></dd></div>
+            <div><dt class="mono">weight</dt><dd class="mono" id="stWeight"></dd></div>
+            <div><dt class="mono">size</dt><dd class="mono" id="stSize"></dd></div>
+            <div><dt class="mono">finish</dt><dd class="mono" id="stFinish"></dd></div>
+          </dl>
+          <p class="stage__price heavy" id="stPrice">€0</p>
+          <button class="btn btn--solid stage__keep" id="stKeep" data-mag data-cursor="keep it">keep it</button>
+        </div>
+
+        <!-- second half of every piece: the face it goes with -->
+        <div class="stage__face" id="stageFace">
+          <div class="stage__faceimg" id="stageFaceImg"></div>
+          <p class="mono stage__facek">the face it goes with <span class="red">●</span></p>
+          <p class="heavy stage__look" id="stLook"></p>
+          <ol class="stage__makeup mono" id="stMakeup"></ol>
+        </div>
+        <p class="stage__phase mono" id="stagePhase"><span>the piece</span> / <span>the face</span></p>
+
+        <div class="stage__bar"><i id="stageBar"></i></div>
+        <p class="stage__next mono" id="stageNext">next: spina ↓</p>
+      </div>
+    </section>
+
+    <!-- ========== 3 · ALL SIX: each one answers the mouse in its own way ========== -->
+    <section class="grid" id="grid">
+      <div class="wire wire--grid" data-wire="grid" aria-hidden="true"></div>
+      <header class="grid__head">
+        <p class="mono" data-scr>all six, side by side</p>
+        <h2 class="heavy grid__t" data-chars>touch them.<br /><span class="out">they bite back.</span></h2>
+      </header>
+      <ul class="grid__list" id="gridList"><!-- built from js/data.js --></ul>
+    </section>
+
+    <!-- ========== 4 · MATERIALS: sideways ========== -->
+    <section class="mats" id="mats">
+      <div class="mats__pin">
+        <p class="mats__k mono" data-scr>what it's made of</p>
+        <div class="mats__track" id="matsTrack">
+          <article class="mat">
+            <img class="mat__blob" src="img/metal/blob-2.webp" alt="" />
+            <p class="mat__n heavy">925</p>
+            <h3 class="chrome mat__t" data-word="SILVER" aria-label="silver"></h3>
+            <p class="txt mat__p">Sterling, 92.5% pure. Soft enough to take the shape of a bite, hard enough to keep it. It darkens if you forget it in a drawer: wear it and it stays bright.</p>
+          </article>
+          <article class="mat">
+            <img class="mat__blob" src="img/metal/blob-5.webp" alt="" />
+            <p class="mat__n heavy">1400°</p>
+            <h3 class="chrome mat__t" data-word="GLASS" aria-label="glass"></h3>
+            <p class="txt mat__p">Poured at fourteen hundred degrees and stopped before it decides what to be. Every Colata is a little different, because liquid never listens.</p>
+          </article>
+          <article class="mat">
+            <img class="mat__blob" src="img/metal/blob-8.webp" alt="" />
+            <p class="mat__n heavy">48</p>
+            <h3 class="chrome mat__t" data-word="STEEL" aria-label="steel"></h3>
+            <p class="txt mat__p">Surgical steel for the spikes: forty-eight on a Museruola, screwed in by hand, one by one. They don't bend. Neither do we.</p>
+          </article>
+          <article class="mat mat--end">
+            <p class="heavy mat__end">no plastic.<br />no plating.<br /><span class="out">no second bites.</span></p>
+          </article>
+        </div>
+        <div class="mats__bar"><i id="matsBar"></i></div>
+      </div>
+    </section>
+
+    <!-- ========== 5 · HOW TO WEAR IT ========== -->
+    <section class="care" id="care">
+      <div class="drips" data-drips="2,6,4,1,5" aria-hidden="true"></div>
+      <p class="mono care__k" data-scr>how to wear it</p>
+      <ol class="care__list">
+        <li><span class="care__n heavy">01</span><p class="heavy">take it off<br />to sleep.</p><p class="txt">Teeth grind at night. Silver loses.</p></li>
+        <li><span class="care__n heavy">02</span><p class="heavy">don't bite<br />other metals.</p><p class="txt">Forks, keys, other people's grillz. Especially other people's grillz.</p></li>
+        <li><span class="care__n heavy">03</span><p class="heavy">polish it<br />on your shirt.</p><p class="txt">That's the whole routine. Nothing with chemicals, nothing with a brush.</p></li>
+        <li><span class="care__n heavy">04</span><p class="heavy">if it scratches,<br /><span class="out">it's working.</span></p><p class="txt">Thorns are sharp on purpose. Hold hands carefully.</p></li>
+      </ol>
+    </section>
+
+    <!-- ========== 6 · KEPT ========== -->
+    <section class="kept" id="kept">
+      <div class="drips" data-drips="3,5,1,6" aria-hidden="true"></div>
+      <p class="mono kept__k" data-scr>what you kept</p>
+      <h2 class="heavy kept__t" data-chars>your bite<br /><span class="out">so far</span></h2>
+      <ul class="kept__list" id="keptList"></ul>
+      <p class="kept__empty txt" id="keptEmpty">Nothing yet. Scroll back up and keep something: it stays here, even if you leave.</p>
+      <div class="kept__sum">
+        <p class="mono">total</p>
+        <p class="heavy kept__total" id="keptTotal">€0</p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>send us your bite →</a>
+      </div>
+    </section>
+
+    <!-- ========== 7 · NEXT ========== -->
+    <a href="grillz.html" class="nextp" data-cursor="next">
+      <span class="mono nextp__k">next</span>
+      <span class="chrome nextp__t" data-word="GRILLZ" aria-label="grillz"></span>
+      <span class="heavy nextp__s">made from your bite →</span>
+    </a>
+
+    <!-- ========== FOOTER: every page ========== -->
+    <footer class="ft" id="ft">
+      <div class="wire wire--ft" data-wire="ft" aria-hidden="true"></div>
+      <div class="ft__aura" id="ftAura" aria-hidden="true"></div>
+      <div class="ft__top">
+        <p class="ft__lead heavy">bring your teeth.<br /><span class="out">we bring the metal.</span></p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>send us your bite →</a>
+      </div>
+      <div class="ft__grid">
+        <div><p class="ft__k mono" data-scr>the house</p><p class="ft__links"><a href="index.html" data-hover-scr>home</a><a href="objects.html" data-hover-scr>objects</a><a href="grillz.html" data-hover-scr>grillz</a><a href="lookbook.html" data-hover-scr>lookbook</a><a href="custom.html" data-hover-scr>custom</a><a href="atelier.html" data-hover-scr>atelier</a></p></div>
+        <div><p class="ft__k mono" data-scr>follow the bite</p><p class="ft__links"><a href="#" data-toast="instagram soon. we're still filing our bio." data-hover-scr>instagram</a><a href="#" data-toast="tiktok soon. the dogs are camera shy." data-hover-scr>tiktok</a><a href="#" data-toast="pinterest soon. pin your teeth." data-hover-scr>pinterest</a></p></div>
+        <div><p class="ft__k mono" data-scr>visit</p><p class="ft__links"><span>via dei denti 13</span><span>milano, by appointment</span><span>tue — sat, 12 — 20</span></p></div>
+        <div><p class="ft__k mono" data-scr>milano now</p><p class="ft__clock heavy" data-clock>00:00</p></div>
+      </div>
+      <p class="chrome ft__word" id="ftWord" data-word="MORSO" data-set="morso" aria-label="MORSO" data-cursor="touch it"></p>
+      <div class="ft__bottom mono">
+        <span>© 2026 MORSO — a concept. no teeth were harmed.</span>
+        <a href="#top" data-jump data-hover-scr>back to the top ↑</a>
+        <span class="ft-sign">concept, design &amp; code by <span class="sig">ghostly.grl</span> ♥</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js?v=20261022-8"></script>
+  <script src="js/main.js?v=20261022-8"></script>
+  <script src="js/objects.js?v=20261022-8"></script>
+</body>
+  <!--
+   *    /\_/\      +
+       ( o.o )   <3  ghostly.grl
+   +    > ^ <          *
+-->
+</html>

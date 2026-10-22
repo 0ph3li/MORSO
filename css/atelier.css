@@ -1,0 +1,98 @@
+/* =========================================================
+   MORSO — atelier.css
+   are we open? · who bites · the bench · so far · visit · overheard
+   concept, design & code by ghostly.grl ♥
+   ========================================================= */
+
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ================= 1 · THE TITLE ================= */
+.ah { position: relative; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4vh; padding: 110px var(--gut) 10vh; overflow: hidden; text-align: center; }
+.ah__aura { position: absolute; left: 50%; top: 55%; width: min(95vh, 95vw); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .3) 0%, rgba(224, 20, 31, .4) 26%, rgba(90, 0, 14, .25) 50%, transparent 68%); filter: blur(40px); pointer-events: none; animation: aura 5s ease-in-out infinite; }
+.ah > :not(.ah__aura):not(.blob):not(.drips) { position: relative; z-index: 2; }
+.ah__meta { position: absolute !important; left: var(--gut); right: var(--gut); top: 74px; display: flex; justify-content: space-between; margin: 0; color: var(--mute); }
+.ah__t { --h: min(24vh, 11vw); }
+.ah__status { display: inline-flex; align-items: center; gap: .4em; margin: 0; font-size: clamp(28px, 4vw, 72px); }
+.ah__dot { width: .45em; height: .45em; border-radius: 50%; background: #2bd96b; box-shadow: 0 0 0 0 rgba(43, 217, 107, .6); animation: ping 1.6s ease-out infinite; }
+.is-closed .ah__dot { background: var(--red); box-shadow: 0 0 0 0 rgba(224, 20, 31, .6); animation-name: ping-red; }
+@keyframes ping { 70% { box-shadow: 0 0 0 .5em rgba(43, 217, 107, 0); } 100% { box-shadow: 0 0 0 0 rgba(43, 217, 107, 0); } }
+@keyframes ping-red { 70% { box-shadow: 0 0 0 .5em rgba(224, 20, 31, 0); } 100% { box-shadow: 0 0 0 0 rgba(224, 20, 31, 0); } }
+.ah__when { margin: 0; color: var(--mute); }
+.ah__when b { color: var(--bone); font-weight: 400; }
+
+/* ================= 2 · WHO BITES ================= */
+.who { position: relative; padding: 26vh var(--gut) 20vh; border-top: 1px solid var(--line); overflow: hidden; }
+.wire--who { left: -10%; width: 120%; top: 8vh; --wh: clamp(36px, 4vw, 70px); --rot: 2deg; }
+.who__k { margin: 0 0 4vh; color: var(--mute); }
+.who__big { margin: 0; max-width: 18ch; font-size: clamp(40px, 6vw, 112px); }
+.who__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; margin-top: 10vh; max-width: 1100px; margin-left: auto; }
+.who__cols p { margin: 0; font-size: clamp(17px, 1.4vw, 23px); line-height: 1.3; }
+@media (max-width: 860px) { .who__cols { grid-template-columns: 1fr; } .who__big { font-size: 9.6vw; } }
+
+/* ================= 3 · THE BENCH ================= */
+.bench { position: relative; }
+.bench__pin { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; flex-direction: column; }
+.bench__head { display: flex; justify-content: space-between; padding: 80px var(--gut) 0; color: var(--mute); }
+.bench__head p { margin: 0; }
+.bench__count b { color: var(--bone); font-weight: 400; }
+.bench__track { flex: 1; display: flex; align-items: center; gap: 5vw; padding: 0 10vw; width: max-content; will-change: transform; }
+.tool { position: relative; flex: none; width: min(34vw, 470px); }
+.tool__img { position: relative; height: 46vh; display: grid; place-items: center; }
+.tool__img::before { content: ''; position: absolute; width: 80%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(239, 236, 230, .25), rgba(224, 20, 31, .2) 40%, transparent 68%); filter: blur(30px); }
+.tool__img img { position: relative; max-height: 100%; max-width: 90%; object-fit: contain; filter: drop-shadow(0 30px 34px rgba(0, 0, 0, .85)); will-change: transform; }
+.tool__img--photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; border-radius: 6px; }
+.tool__n { margin: 3vh 0 0; font-size: clamp(40px, 5vw, 96px); color: transparent; -webkit-text-stroke: 1.5px var(--bone); line-height: .9; }
+.tool__t { margin: 8px 0 0; font-size: clamp(24px, 2.4vw, 42px); }
+.tool__p { margin: 10px 0 0; max-width: 34ch; font-size: 16px; line-height: 1.3; color: var(--mute); }
+.bench__bar { height: 2px; margin: 0 var(--gut) 4vh; background: var(--line); }
+.bench__bar i { display: block; height: 100%; background: var(--red); transform: scaleX(0); transform-origin: left; }
+/* on a phone the bench is a simple vertical list: sideways scrolling made the pieces overlap */
+@media (max-width: 860px) {
+  .bench { height: auto !important; }
+  .bench__pin { position: relative; height: auto; padding-bottom: 10vh; }
+  .bench__track { flex-direction: column; width: auto; gap: 8vh; padding: 6vh var(--gut) 0; transform: none !important; }
+  .tool { width: 100%; }
+  .tool__img { height: 40vh; overflow: hidden; }
+  .bench__bar, .bench__count { display: none; }
+}
+
+/* ================= 4 · NUMBERS ================= */
+.nums { padding: 20vh var(--gut); border-top: 1px solid var(--line); }
+.nums__k { margin: 0 0 6vh; color: var(--mute); }
+.nums__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3vw; }
+.nums__list li { display: grid; gap: 1vh; padding-top: 2vh; border-top: 1px solid var(--line); }
+.nums__list b { font-size: clamp(48px, 6.4vw, 120px); line-height: .9; font-variant-numeric: tabular-nums; }
+.nums__list li:last-child b { color: var(--red); }
+.nums__list .mono { color: var(--mute); }
+@media (max-width: 860px) { .nums__list { grid-template-columns: 1fr 1fr; gap: 6vh 5vw; } }
+
+/* ================= 5 · VISIT ================= */
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; padding: 20vh var(--gut); border-top: 1px solid var(--line); }
+.visit__map { position: relative; aspect-ratio: 1; border-radius: 14px; background: radial-gradient(80% 80% at 50% 55%, #161616, #050505); border: 1px solid var(--line); overflow: hidden; }
+.visit__map svg { width: 100%; height: 100%; }
+.map__streets path { fill: none; stroke: rgba(239, 236, 230, .22); stroke-width: 14; stroke-linecap: round; }
+.map__streets .map__diag { stroke-width: 22; stroke: rgba(239, 236, 230, .12); }
+.map__labels text { fill: var(--mute); font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.map__dot { fill: var(--red); }
+.map__ring { fill: rgba(224, 20, 31, .2); stroke: var(--red); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: pin 2s ease-out infinite; }
+@keyframes pin { from { transform: scale(.3); opacity: 1; } to { transform: scale(2.2); opacity: 0; } }
+.visit__pinlabel { position: absolute; left: 50%; top: 64%; translate: -20% 0; margin: 0; padding: 6px 10px; background: var(--bone); color: var(--ink); }
+.visit__k { margin: 0 0 3vh; color: var(--mute); }
+.visit__t { font-size: clamp(48px, 6vw, 110px); }
+.visit__p, .visit__how { margin: 3vh 0 0; max-width: 40ch; font-size: 17px; line-height: 1.3; color: var(--mute); }
+.hours { list-style: none; margin: 4vh 0 0; padding: 0; max-width: 460px; }
+.hours li { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--line); color: var(--mute); }
+.hours li:last-child { border-bottom: 1px solid var(--line); }
+.hours li.is-today { color: var(--bone); }
+.hours li.is-today span:first-child::before { content: '● '; color: var(--red); }
+.visit__side .btn { margin-top: 4vh; }
+@media (max-width: 860px) { .visit { grid-template-columns: 1fr; } }
+
+/* ================= 6 · OVERHEARD ================= */
+.heard { padding: 16vh 0; border-top: 1px solid var(--line); overflow: hidden; }
+.heard__k { margin: 0 var(--gut) 5vh; color: var(--mute); }
+.heard__row { overflow: hidden; white-space: nowrap; padding: 1vh 0; }
+.heard__track { display: inline-flex; gap: .8em; margin: 0; font-size: clamp(30px, 4.4vw, 80px); will-change: transform; }
+.heard__track b { color: var(--red); font-weight: 900; }
+.heard__track small { align-self: center; font-family: var(--f-mono); font-size: 11px; font-weight: 400; letter-spacing: .06em; color: var(--mute); }
+.heard__row--out .heard__track { color: transparent; -webkit-text-stroke: 1.5px rgba(239, 236, 230, .5); }

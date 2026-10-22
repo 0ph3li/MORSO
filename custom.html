@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <title>MORSO — custom</title>
+  <meta name="description" content="Tell us what you want in your mouth: grillz, rings, pendants or something we've never made. Pick the teeth, the metal, the words." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- concept, design & code by ghostly.grl ♥ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="preload" href="img/HOME/jaw-top.webp" as="image" />
+  <link rel="stylesheet" href="css/style.css?v=20261022-8" />
+  <link rel="stylesheet" href="css/custom.css?v=20261022-8" />
+</head>
+<body class="is-loading" data-page="custom">
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="liquid" x="-10%" y="-20%" width="120%" height="140%">
+        <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="4" result="n" />
+        <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ================= LOADER ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <p class="ld-num" id="ldNum">00</p>
+    <p class="ld-bot mono"><span id="ldMsg">warming the silver</span><span>milano — <b data-clock>00:00</b></span></p>
+  </div>
+
+  <!-- global fx -->
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hdr" id="hdr">
+    <nav class="nav" aria-label="Main">
+      <a href="objects.html" data-hover-scr>objects</a>
+      <a href="grillz.html" data-hover-scr>grillz</a>
+      <a href="lookbook.html" data-hover-scr>lookbook</a>
+      <a href="custom.html" aria-current="page" data-hover-scr>custom</a>
+      <a href="atelier.html" data-hover-scr>atelier</a>
+    </nav>
+    <a href="index.html" class="logo" aria-label="MORSO home">MORSO</a>
+    <a href="#order" class="hdr__cta" data-jump data-hover-scr>start the order</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== 1 · THE TITLE ========== -->
+    <section class="ch" id="ch">
+      <div class="ch__aura" aria-hidden="true"></div>
+      <img class="blob" data-blob="3" data-at="8% 22%" data-w="10vw" data-depth="1.4" alt="" />
+      <img class="blob" data-blob="9" data-at="84% 60%" data-w="11vw" data-depth="-1.2" alt="" />
+      <p class="ch__meta mono"><span data-scr>N°03 — custom</span><span data-scr>one of one · made in milano</span></p>
+      <h1 class="chrome chrome--liquid ch__t" id="chT" data-word="CUSTOM" aria-label="custom"></h1>
+      <p class="ch__lead heavy">tell us what you want<br /><span class="out">in your mouth.</span></p>
+      <p class="ch__s txt">Five questions, two minutes. We answer within 48 hours, usually with a sketch and a lot of enthusiasm.</p>
+      <a href="#order" class="btn btn--solid" data-jump data-mag data-hover-scr>start →</a>
+    </section>
+
+    <!-- ========== 2 · THE ORDER ========== -->
+    <section class="order" id="order">
+      <form class="order__form" id="orderForm" novalidate>
+
+        <!-- 01 what -->
+        <fieldset class="q" data-q="1">
+          <legend class="q__h"><span class="mono">01 / 05</span><span class="heavy">what is it?</span></legend>
+          <div class="chips" data-name="kind">
+            <button type="button" class="chip-big" data-v="grill" data-cursor="grill">a grill</button>
+            <button type="button" class="chip-big" data-v="ring" data-cursor="ring">a ring</button>
+            <button type="button" class="chip-big" data-v="pendant" data-cursor="pendant">a pendant</button>
+            <button type="button" class="chip-big" data-v="weird" data-cursor="surprise us">something you've never made</button>
+          </div>
+        </fieldset>
+
+        <!-- 02 changes with the piece: teeth for a grill, size for a ring, chain for a pendant, a description for the rest -->
+        <fieldset class="q" data-q="2" id="q2">
+          <legend class="q__h"><span class="mono">02 / 05</span><span class="heavy" id="q2Title">pick 01 first</span></legend>
+          <p class="q__s txt" id="q2Sub">This question changes with what you choose above.</p>
+
+          <div class="pane is-on" data-for="none">
+            <p class="pane__empty mono">↑ choose what it is, and this question becomes about that</p>
+          </div>
+
+          <div class="pane" data-for="grill">
+            <div class="mouthmap" id="mouthMap">
+              <div class="mouthmap__aura" aria-hidden="true"></div>
+              <img src="img/HOME/jaw-top.webp" alt="an upper jaw, seen from the front" draggable="false" />
+            </div>
+            <div class="mouthmap__foot">
+              <p class="mono"><b id="teethN">0</b> teeth</p>
+              <button type="button" class="chip" id="fangs" data-cursor="grow">fangs: <b>off</b></button>
+              <button type="button" class="chip" id="allTeeth" data-cursor="all">front six</button>
+              <button type="button" class="chip" id="noTeeth" data-cursor="clear">clear</button>
+            </div>
+          </div>
+
+          <div class="pane" data-for="ring">
+            <div class="ringpv">
+              <div class="ringpv__aura" aria-hidden="true"></div>
+              <img src="img/HOME/objects/thorne.webp" alt="a ring with spikes" id="ringImg" draggable="false" />
+              <p class="ringpv__size heavy"><span id="ringSizeN">14</span><small class="mono">it size</small></p>
+            </div>
+            <label class="range"><span class="mono">size <b id="ringSizeL">14 — about 17.3 mm</b></span><input type="range" id="ringSize" min="4" max="30" step="1" value="14" /></label>
+            <p class="mono q__mini">which finger</p>
+            <div class="chips" data-name="ring.finger">
+              <button type="button" class="chip-big" data-v="thumb">thumb</button>
+              <button type="button" class="chip-big" data-v="index">index</button>
+              <button type="button" class="chip-big" data-v="middle">middle</button>
+              <button type="button" class="chip-big" data-v="ring">ring</button>
+              <button type="button" class="chip-big" data-v="pinky">pinky</button>
+            </div>
+            <label class="range"><span class="mono">spikes <b id="ringSpikesL">0 — smooth</b></span><input type="range" id="ringSpikes" min="0" max="12" step="1" value="0" /></label>
+          </div>
+
+          <div class="pane" data-for="pendant">
+            <p class="mono q__mini">the shape</p>
+            <div class="shapes" data-name="pendant.shape">
+              <button type="button" class="shape" data-v="cross"><img src="img/HOME/objects/reliquia.webp" alt="" /><span>cross</span></button>
+              <button type="button" class="shape" data-v="spine"><img src="img/HOME/objects/spina.webp" alt="" /><span>spine</span></button>
+              <button type="button" class="shape" data-v="crown"><img src="img/HOME/objects/thorne.webp" alt="" /><span>crown</span></button>
+              <button type="button" class="shape" data-v="drop"><img src="img/metal/blob-5.webp" alt="" /><span>liquid drop</span></button>
+              <button type="button" class="shape" data-v="initial"><img src="img/type/M.webp" alt="" /><span>your initial</span></button>
+            </div>
+            <p class="mono q__mini">how long</p>
+            <div class="lengths">
+              <div class="chips" data-name="pendant.length">
+                <button type="button" class="chip-big" data-v="40">40 cm</button>
+                <button type="button" class="chip-big" data-v="45">45 cm</button>
+                <button type="button" class="chip-big" data-v="50">50 cm</button>
+                <button type="button" class="chip-big" data-v="60">60 cm</button>
+                <button type="button" class="chip-big" data-v="80">80 cm</button>
+              </div>
+              <div class="body" aria-hidden="true">
+                <svg viewBox="0 0 120 200"><path class="body__line" d="M30 0 C 30 40, 20 60, 8 80 M90 0 C 90 40, 100 60, 112 80" /><path class="body__chain" id="chainPath" d="M38 18 Q 60 40 82 18" /></svg>
+                <p class="mono" id="sitsAt">sits at —</p>
+              </div>
+            </div>
+            <p class="mono q__mini">the chain</p>
+            <div class="chips" data-name="pendant.chain">
+              <button type="button" class="chip-big" data-v="snake">snake</button>
+              <button type="button" class="chip-big" data-v="box">box</button>
+              <button type="button" class="chip-big" data-v="barbed">barbed wire</button>
+            </div>
+          </div>
+
+          <div class="pane" data-for="weird">
+            <label class="field field--wide"><span class="mono">describe it</span><textarea id="wDesc" rows="4" placeholder="a cage for one tooth. a nose chain that goes to the ear. a ring for a dog."></textarea></label>
+            <p class="mono q__mini">where on the body</p>
+            <div class="chips chips--multi" data-name="weird.where" data-multi>
+              <button type="button" class="chip-big" data-v="teeth">teeth</button>
+              <button type="button" class="chip-big" data-v="ear">ear</button>
+              <button type="button" class="chip-big" data-v="nose">nose</button>
+              <button type="button" class="chip-big" data-v="brow">brow</button>
+              <button type="button" class="chip-big" data-v="nails">nails</button>
+              <button type="button" class="chip-big" data-v="hair">hair</button>
+              <button type="button" class="chip-big" data-v="dog">the dog</button>
+            </div>
+            <label class="range"><span class="mono">how weird <b id="weirdL">5 — unsettling</b></span><input type="range" id="weirdLvl" min="1" max="10" step="1" value="5" /></label>
+          </div>
+        </fieldset>
+
+        <!-- 03 metal -->
+        <fieldset class="q" data-q="3">
+          <legend class="q__h"><span class="mono">03 / 05</span><span class="heavy">the metal</span></legend>
+          <div class="chips" data-name="metal">
+            <button type="button" class="chip-big" data-v="silver">925 silver</button>
+            <button type="button" class="chip-big" data-v="black">black rhodium</button>
+            <button type="button" class="chip-big" data-v="gold">gold, on request</button>
+          </div>
+          <div class="chips chips--small" data-name="finish">
+            <button type="button" class="chip" data-v="mirror">mirror</button>
+            <button type="button" class="chip" data-v="raw">raw</button>
+            <button type="button" class="chip" data-v="oxidised">oxidised</button>
+            <button type="button" class="chip" data-v="spikes">+ spikes</button>
+          </div>
+        </fieldset>
+
+        <!-- 04 words -->
+        <fieldset class="q" data-q="4">
+          <legend class="q__h"><span class="mono">04 / 05</span><span class="heavy" id="q4Title">write something</span></legend>
+          <p class="q__s txt" id="q4Sub">A name, an initial, an insult. Up to ten letters, cast in liquid silver.</p>
+          <label class="field field--big"><span class="mono">your word</span><input type="text" id="word" maxlength="10" autocomplete="off" spellcheck="false" placeholder="type here" /></label>
+          <div class="preview" id="preview" aria-live="polite"><p class="chrome preview__w" id="previewW" data-word="" aria-label="preview"></p><p class="preview__empty mono" id="previewEmpty">your letters will drop here</p></div>
+        </fieldset>
+
+        <!-- 05 you -->
+        <fieldset class="q" data-q="5">
+          <legend class="q__h"><span class="mono">05 / 05</span><span class="heavy">about you</span></legend>
+          <div class="fields">
+            <label class="field"><span class="mono">name</span><input type="text" id="fName" autocomplete="name" /></label>
+            <label class="field"><span class="mono">email</span><input type="email" id="fEmail" autocomplete="email" /></label>
+            <label class="field"><span class="mono">instagram</span><input type="text" id="fIg" placeholder="@" autocomplete="off" /></label>
+            <label class="field"><span class="mono">city</span><input type="text" id="fCity" autocomplete="address-level2" /></label>
+            <label class="field field--wide"><span class="mono">anything else</span><textarea id="fMsg" rows="3" placeholder="a photo you love, a tooth you hate, a deadline"></textarea></label>
+          </div>
+        </fieldset>
+      </form>
+
+      <!-- the summary, always next to you -->
+      <aside class="sum" id="sum" aria-label="your order so far">
+        <div class="sum__card" id="sumCard">
+          <p class="mono sum__k">your bite so far <span class="red">●</span></p>
+          <dl class="sum__list" id="sumList"></dl>
+          <p class="sum__est"><span class="mono">estimate</span><b class="heavy" id="sumEst">—</b></p>
+          <button type="button" class="btn btn--solid sum__send" id="send" data-mag data-cursor="bite">send us your bite →</button>
+          <p class="sum__note mono" id="sumNote">nothing is charged. we reply within 48h.</p>
+        </div>
+        <div class="sum__jaw sum__jaw--top" id="sumTop"><img src="img/HOME/jaw-top.webp" alt="" draggable="false" /></div>
+        <div class="sum__jaw sum__jaw--bot" id="sumBot"><img src="img/HOME/jaw-bottom.webp" alt="" draggable="false" /></div>
+      </aside>
+    </section>
+
+    <!-- ========== 3 · AFTER ========== -->
+    <section class="after" id="after">
+      <div class="drips" data-drips="1,5,3,6" aria-hidden="true"></div>
+      <p class="mono after__k" data-scr>what happens next</p>
+      <h2 class="heavy after__t" data-chars>from your mouth<br /><span class="out">to ours, and back.</span></h2>
+      <div class="after__line"><i id="afterLine"></i></div>
+      <ol class="after__list">
+        <li><span class="heavy">48h</span><p class="mono">we reply</p><p class="txt">A sketch, a price, a few questions. Sometimes a counter-proposal.</p></li>
+        <li><span class="heavy">1 wk</span><p class="mono">the kit</p><p class="txt">For grillz: the impression kit, free, with instructions a dog could follow.</p></li>
+        <li><span class="heavy">4–6</span><p class="mono">weeks of making</p><p class="txt">Wax, cast, file, polish. We send photos if you ask nicely.</p></li>
+        <li><span class="heavy">♥</span><p class="mono">it arrives</p><p class="txt">In a box with teeth. Insured. Open it somewhere you can scream.</p></li>
+      </ol>
+    </section>
+
+    <!-- ========== FOOTER: every page ========== -->
+    <footer class="ft" id="ft">
+      <div class="wire wire--ft" data-wire="ft" aria-hidden="true"></div>
+      <div class="ft__aura" id="ftAura" aria-hidden="true"></div>
+      <div class="ft__top">
+        <p class="ft__lead heavy">bring your teeth.<br /><span class="out">we bring the metal.</span></p>
+        <a href="#order" class="btn btn--solid" data-jump data-mag data-hover-scr>back to your order ↑</a>
+      </div>
+      <div class="ft__grid">
+        <div><p class="ft__k mono" data-scr>the house</p><p class="ft__links"><a href="index.html" data-hover-scr>home</a><a href="objects.html" data-hover-scr>objects</a><a href="grillz.html" data-hover-scr>grillz</a><a href="lookbook.html" data-hover-scr>lookbook</a><a href="custom.html" data-hover-scr>custom</a><a href="atelier.html" data-hover-scr>atelier</a></p></div>
+        <div><p class="ft__k mono" data-scr>follow the bite</p><p class="ft__links"><a href="#" data-toast="instagram soon. we're still filing our bio." data-hover-scr>instagram</a><a href="#" data-toast="tiktok soon. the dogs are camera shy." data-hover-scr>tiktok</a><a href="#" data-toast="pinterest soon. pin your teeth." data-hover-scr>pinterest</a></p></div>
+        <div><p class="ft__k mono" data-scr>visit</p><p class="ft__links"><span>via dei denti 13</span><span>milano, by appointment</span><span>tue — sat, 12 — 20</span></p></div>
+        <div><p class="ft__k mono" data-scr>milano now</p><p class="ft__clock heavy" data-clock>00:00</p></div>
+      </div>
+      <p class="chrome ft__word" id="ftWord" data-word="MORSO" data-set="morso" aria-label="MORSO" data-cursor="touch it"></p>
+      <div class="ft__bottom mono">
+        <span>© 2026 MORSO — a concept. no teeth were harmed.</span>
+        <a href="#top" data-jump data-hover-scr>back to the top ↑</a>
+        <span class="ft-sign">concept, design &amp; code by <span class="sig">ghostly.grl</span> ♥</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js?v=20261022-8"></script>
+  <script src="js/main.js?v=20261022-8"></script>
+  <script src="js/custom.js?v=20261022-8"></script>
+</body>
+  <!--
+   *    /\_/\      +
+       ( o.o )   <3  ghostly.grl
+   +    > ^ <          *
+-->
+</html>

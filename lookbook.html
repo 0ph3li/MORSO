@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="google" content="notranslate" />
+  <title>MORSO — lookbook</title>
+  <meta name="description" content="N°01, the first bite: the dogs, the faces, the hands. The MORSO lookbook, autumn / winter 2026." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- concept, design & code by ghostly.grl ♥ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20261022-8" />
+  <link rel="stylesheet" href="css/lookbook.css?v=20261022-8" />
+</head>
+<body class="is-loading" data-page="lookbook">
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="liquid" x="-10%" y="-20%" width="120%" height="140%">
+        <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="4" result="n" />
+        <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ================= LOADER ================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <p class="ld-num" id="ldNum">00</p>
+    <p class="ld-bot mono"><span id="ldMsg">warming the silver</span><span>milano — <b data-clock>00:00</b></span></p>
+  </div>
+
+  <!-- global fx -->
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+  <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><i class="cursor__dot"></i><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hdr" id="hdr">
+    <nav class="nav" aria-label="Main">
+      <a href="objects.html" data-hover-scr>objects</a>
+      <a href="grillz.html" data-hover-scr>grillz</a>
+      <a href="lookbook.html" aria-current="page" data-hover-scr>lookbook</a>
+      <a href="custom.html" data-hover-scr>custom</a>
+      <a href="atelier.html" data-hover-scr>atelier</a>
+    </nav>
+    <a href="index.html" class="logo" aria-label="MORSO home">MORSO</a>
+    <a href="objects.html" class="hdr__cta" data-hover-scr>shop the look</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== 1 · THE TITLE, inside a spinning wall of photos ========== -->
+    <section class="lh" id="lh">
+      <div class="lh__stage" id="lhStage" data-cursor="drag to spin">
+        <div class="cyl" id="cyl"><!-- photos built in js/lookbook.js --></div>
+      </div>
+      <div class="lh__aura" aria-hidden="true"></div>
+      <p class="lh__meta mono"><span data-scr>N°01 — the first bite</span><span data-scr>autumn / winter 2026</span></p>
+      <h1 class="chrome chrome--liquid lh__t" id="lhT" data-word="LOOKBOOK" aria-label="lookbook"></h1>
+      <p class="lh__sub heavy">three chapters.<br /><span class="out">no smiling allowed.</span></p>
+      <p class="lh__hint mono"><span data-scr>drag the wall · scroll for chapter I</span> <span class="red blink">●</span></p>
+    </section>
+
+    <!-- ========== 2 · THE CHAPTERS: photos dealt like cards ========== -->
+    <section class="chap" data-chap="dogs">
+      <div class="chap__pin">
+        <div class="chap__side">
+          <p class="mono chap__k">chapter I</p>
+          <h2 class="chrome chap__t" data-word="DOGS" aria-label="the dogs"></h2>
+          <p class="txt chap__p">Where it started. Two dobermanns, a muzzle with spikes, a girl who wanted to wear it.</p>
+          <p class="mono chap__cap"><b class="chap__n">01</b> / <span class="chap__tot">04</span> — <span class="chap__c"></span></p>
+        </div>
+        <div class="chap__pile"></div>
+        <div class="chap__bar"><i></i></div>
+      </div>
+    </section>
+
+    <section class="chap chap--right" data-chap="faces">
+      <div class="chap__pin">
+        <div class="chap__side">
+          <p class="mono chap__k">chapter II</p>
+          <h2 class="chrome chap__t" data-word="FACES" aria-label="the faces"></h2>
+          <p class="txt chap__p">Every piece has a face it goes with. Silver lids, bleached brows, lips left bare in the middle.</p>
+          <p class="mono chap__cap"><b class="chap__n">01</b> / <span class="chap__tot">06</span> — <span class="chap__c"></span></p>
+        </div>
+        <div class="chap__pile"></div>
+        <div class="chap__bar"><i></i></div>
+      </div>
+    </section>
+
+    <section class="chap" data-chap="hands">
+      <div class="chap__pin">
+        <div class="chap__side">
+          <p class="mono chap__k">chapter III</p>
+          <h2 class="chrome chap__t" data-word="HANDS" aria-label="the hands"></h2>
+          <p class="txt chap__p">Claws, rings, thorns that grew out of the knuckles. Hold hands carefully.</p>
+          <p class="mono chap__cap"><b class="chap__n">01</b> / <span class="chap__tot">04</span> — <span class="chap__c"></span></p>
+        </div>
+        <div class="chap__pile"></div>
+        <div class="chap__bar"><i></i></div>
+      </div>
+    </section>
+
+    <!-- ========== 3 · CREDITS ========== -->
+    <section class="credits" id="credits">
+      <div class="wire wire--credits" data-wire="credits" aria-hidden="true"></div>
+      <p class="mono credits__k" data-scr>credits</p>
+      <ul class="credits__list" id="creditsList"><!-- built from js/lookbook.js --></ul>
+    </section>
+
+    <!-- ========== 4 · SHOP THE LOOK ========== -->
+    <a href="objects.html" class="shop" data-cursor="shop">
+      <span class="mono shop__k">everything you saw is real, cast in milano</span>
+      <span class="heavy shop__pre">shop the</span>
+      <span class="chrome shop__t" data-word="LOOK" aria-label="look"></span>
+      <span class="mono shop__s">see the objects →</span>
+    </a>
+
+    <!-- ========== FOOTER: every page ========== -->
+    <footer class="ft" id="ft">
+      <div class="wire wire--ft" data-wire="ft" aria-hidden="true"></div>
+      <div class="ft__aura" id="ftAura" aria-hidden="true"></div>
+      <div class="ft__top">
+        <p class="ft__lead heavy">bring your teeth.<br /><span class="out">we bring the metal.</span></p>
+        <a href="custom.html" class="btn btn--solid" data-mag data-hover-scr>send us your bite →</a>
+      </div>
+      <div class="ft__grid">
+        <div><p class="ft__k mono" data-scr>the house</p><p class="ft__links"><a href="index.html" data-hover-scr>home</a><a href="objects.html" data-hover-scr>objects</a><a href="grillz.html" data-hover-scr>grillz</a><a href="lookbook.html" data-hover-scr>lookbook</a><a href="custom.html" data-hover-scr>custom</a><a href="atelier.html" data-hover-scr>atelier</a></p></div>
+        <div><p class="ft__k mono" data-scr>follow the bite</p><p class="ft__links"><a href="#" data-toast="instagram soon. we're still filing our bio." data-hover-scr>instagram</a><a href="#" data-toast="tiktok soon. the dogs are camera shy." data-hover-scr>tiktok</a><a href="#" data-toast="pinterest soon. pin your teeth." data-hover-scr>pinterest</a></p></div>
+        <div><p class="ft__k mono" data-scr>visit</p><p class="ft__links"><span>via dei denti 13</span><span>milano, by appointment</span><span>tue — sat, 12 — 20</span></p></div>
+        <div><p class="ft__k mono" data-scr>milano now</p><p class="ft__clock heavy" data-clock>00:00</p></div>
+      </div>
+      <p class="chrome ft__word" id="ftWord" data-word="MORSO" data-set="morso" aria-label="MORSO" data-cursor="touch it"></p>
+      <div class="ft__bottom mono">
+        <span>© 2026 MORSO — a concept. no teeth were harmed.</span>
+        <a href="#top" data-jump data-hover-scr>back to the top ↑</a>
+        <span class="ft-sign">concept, design &amp; code by <span class="sig">ghostly.grl</span> ♥</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/data.js?v=20261022-8"></script>
+  <script src="js/main.js?v=20261022-8"></script>
+  <script src="js/lookbook.js?v=20261022-8"></script>
+</body>
+  <!--
+   *    /\_/\      +
+       ( o.o )   <3  ghostly.grl
+   +    > ^ <          *
+-->
+</html>
