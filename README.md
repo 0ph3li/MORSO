@@ -23,9 +23,7 @@ The site is a fashion magazine with teeth. A real mouth opens on the cover, bite
  
 > concept, design & code by **ghostly.grl** ♥
  
-<!-- tip: drop a screenshot or a GIF of the cover here, e.g.
-![MORSO cover](docs/cover.gif)
--->
+
  
 ---
  
@@ -91,24 +89,11 @@ Grillz models: *cattedrale · rovo · ricciolo · stemma · cuore · corna.*
 No install needed. Clone it and serve the folder with any static server (opening `index.html` directly works too, but a server is closer to the real thing):
  
 ```bash
-git clone https://github.com/USERNAME/MORSO.git
-cd MORSO
- 
-# pick one
-npx serve .
-python3 -m http.server 8000
 ```
  
 Then open `http://localhost:8000` (or the address `serve` prints).
 An internet connection is needed for GSAP, Lenis and the fonts, which load from CDNs.
  
-## ✦ put it online (GitHub Pages)
- 
-1. push the repo to GitHub
-2. **Settings → Pages → Build and deployment**
-3. Source: **Deploy from a branch**, branch **`main`**, folder **`/ (root)`**
-4. after a minute the site is at `https://USERNAME.github.io/MORSO/`
-All paths are relative, so it works from a sub-folder as is.
  
 ## ✦ project structure
  
